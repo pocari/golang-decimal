@@ -35,4 +35,20 @@ func main() {
 	fmt.Printf("total.StringFixed(2): %s\n", total.StringFixed(2))
 	fmt.Printf("total.StringFixed(3): %s\n", total.StringFixed(3))
 
+	sum := decimal.NewFromInt(0)
+	unit, err := decimal.NewFromString("0.1")
+	if err != nil {
+		panic(err)
+	}
+
+	var sumF float64 = 0
+	var unitF float64 = 0.1
+
+	for i := 0; i < 100; i++ {
+		sum = sum.Add(unit)
+		sumF += unitF
+	}
+
+	fmt.Printf("bigdecimal sum: %s\n", sum.String())
+	fmt.Println("float64 sum:    ", sumF)
 }
